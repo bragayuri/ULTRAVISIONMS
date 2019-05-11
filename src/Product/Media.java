@@ -1,4 +1,9 @@
+// Yuri Braga 2017141
+
 package Product;
+
+// This is my abstract class Media which will provide commom attributes for all the type of medias we have.
+//Such Movie, Music, BoxSet etc.
 
 public abstract class Media {
 	
@@ -14,9 +19,11 @@ public abstract class Media {
 	protected String arrival;
 	protected String rate;
 	protected String director;
-	protected Boolean Avaiability;
-	
+	protected boolean Avaiability;
 	protected String name;
+	
+	// My getters and setters are public.
+	
 	public String getName() {
 		return name;
 	}

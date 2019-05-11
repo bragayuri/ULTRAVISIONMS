@@ -1,3 +1,5 @@
+// Yuri Braga 2017141.
+
 package Product;
 
 import javax.swing.JOptionPane;
@@ -6,7 +8,7 @@ import Model.Db;
 import View.ManageTitle;
 
 // This class is my Movie class. Every time a user generates a Movie Media this class will store the values inside
-// an Array and also save it inside my Databases.
+// an ArrayList and also save it inside my Databases.
 
 public class Movie extends Media implements Dvd,BlueRay { // The class Movie is a subclass of Media class.
 	// The Interface DVD and BlueRay is implemented.
@@ -81,7 +83,7 @@ public class Movie extends Media implements Dvd,BlueRay { // The class Movie is 
 
 	@Override
 	public void ultraHighQualityVideos(String blueray) {
-		// TODO Auto-generated method stub
+		return;
 		
 	}
 	
@@ -89,6 +91,13 @@ public class Movie extends Media implements Dvd,BlueRay { // The class Movie is 
 
 	@Override
 	public void HighqualityVideos() {
+		
+	}
+
+
+
+	@Override
+	public void ultraHighQualityVideos() {
 		// TODO Auto-generated method stub
 		
 	}

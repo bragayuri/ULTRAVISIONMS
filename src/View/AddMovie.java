@@ -202,16 +202,21 @@ public class AddMovie extends JFrame implements ActionListener {
 		 
 		 
 		 
+		 
 		 JButton btn1 = new JButton("ADDTITLE");
 		 fourteen.add(btn1);
-		 btn1.setActionCommand("Addtitle");
-		 btn1.addActionListener(this);
+		 btn1.setActionCommand("ADDTITLE");
+	     btn1.addActionListener(this);
 		 
 		 JButton btn2 = new JButton("GO BACK");
 		 fourteen.add(btn2);
+		 btn2.setActionCommand("GO BACK");
+	     btn2.addActionListener(this);
 		 
 		 JButton btn3 = new JButton("HOME");
 		 fourteen.add(btn3);
+		 btn3.setActionCommand("HOME");
+	     btn3.addActionListener(this);
 		 
 		 
 		 
@@ -234,7 +239,7 @@ public class AddMovie extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if(e.getActionCommand().equals("Addtitle")) {
+		if(e.getActionCommand().equals("ADDTITLE")) {
 			
 			// Here starts my encapsulation which will pass my User Input Textfield to a String that will be received on
 			// the Movie class.
@@ -252,6 +257,17 @@ public class AddMovie extends JFrame implements ActionListener {
 			
 			new Movie(a,b,c,d,E,f,g,h,i,j,k);
 			this.dispose();
+			
+		}else if(e.getActionCommand().equals("GO BACK")) {
+			this.dispose();
+			
+		ManageTitle mytitle = new ManageTitle();
+		}
+		
+		if(e.getActionCommand().contentEquals("HOME")) {
+			this.dispose();
+			
+			MainPanel mypanel = new MainPanel();
 			
 		}
 		

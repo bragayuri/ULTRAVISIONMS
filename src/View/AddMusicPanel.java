@@ -195,14 +195,19 @@ public class AddMusicPanel extends JFrame implements ActionListener {
 		 
 		 JButton btn1 = new JButton("ADDTITLE");
 		 fourteen.add(btn1);
-		 btn1.setActionCommand("Addtitle");
-		 btn1.addActionListener(this);
+		 btn1.setActionCommand("ADDTITLE");
+	     btn1.addActionListener(this);
 		 
 		 JButton btn2 = new JButton("GO BACK");
 		 fourteen.add(btn2);
+		 btn2.setActionCommand("GO BACK");
+	     btn2.addActionListener(this);
 		 
 		 JButton btn3 = new JButton("HOME");
 		 fourteen.add(btn3);
+		 btn3.setActionCommand("HOME");
+	     btn3.addActionListener(this);
+		 
 		 
 		 
 		 
@@ -238,6 +243,18 @@ public class AddMusicPanel extends JFrame implements ActionListener {
 			String k = t11.getText();
 			
 			new Music(a,b,c,d,E,f,g,h,i,j,k);
+		
+		}else if(e.getActionCommand().equals("GO BACK")) {
+			this.dispose();
+			
+		ManageTitle mytitle = new ManageTitle();
+		}
+		
+		if(e.getActionCommand().contentEquals("HOME")) {
+			this.dispose();
+			
+			MainPanel mypanel = new MainPanel();
+			
 		}
 		
 		

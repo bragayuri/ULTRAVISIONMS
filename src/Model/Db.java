@@ -1,24 +1,33 @@
+// Yuri Braga 2017141
+
 package Model;
 
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-import static sample.view.SampleFrame.logname;
-import static sample.view.SampleFrame.logpass;
+import User.Customer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import View.AddCustomerPanel;
+import View.AddRental;
 import View.ManageTitle;
 import View.SearchTitle;
 import View.UpdateCustomer;
-import sample.view.Systempanel;
+
+/*
+ * This class will be responsible for some of my Db connections.
+ */
 
 public class Db {
 	
+	private static final String Customer = null;
+
 	String[][] data = new String[12][12]; //arrays with the query information
 	
 	Connection conn = null;
@@ -26,6 +35,7 @@ public class Db {
 	Statement stmt =null;
 	
 	ResultSet rs =null;
+	
 	
 	
 	
@@ -72,6 +82,137 @@ public class Db {
 	        
 	 }
 	 
+	 public void selectdb(String message) {
+		    //this method will connect my Provider once Login is selected at the Sample Frame class.                            
+		        try {
+		            //the start of my connection with the database.
+		            Class.forName("com.mysql.cj.jdbc.Driver");
+		            String dbServer = "jdbc:mysql://localhost:3306/ultravision?useTimezone=true&serverTimezone=UTC";
+		            String user = "root";
+		            String password3 = "rootroot";
+		            Connection con = DriverManager.getConnection(dbServer, user, password3);
+		            Statement stmt = con.createStatement();
+		            String sql = message;
+		            ResultSet rs = stmt.executeQuery(sql);
+
+		            if (rs.next()) {// if the informations typed exists inside my database..
+		                JOptionPane.showMessageDialog(null, "Customer is free to rent");
+		                // an option will Show up...
+		                
+		                AddRental myrental = new AddRental();// the method userPanel from the User class will be called.The Welcome Panel starts.
+
+		            } else {// if the user informations are not there...
+		                JOptionPane.showMessageDialog(null, "Customer not registred yet.");
+		               
+		                int reply=JOptionPane.showConfirmDialog(null, "Would you like to register a new customer?", "Test", JOptionPane.YES_NO_OPTION);
+		                if (reply == JOptionPane.YES_OPTION) {
+		                	
+		                  AddCustomerPanel newcustomer = new AddCustomerPanel();
+		                  
+		                  
+		                }
+		                
+		                else {
+		                   JOptionPane.showMessageDialog(null, "GOODBYE");
+		                   System.exit(0);
+		                }
+		              
+					
+		                // this option show the user can not go any further.
+		            }
+		            con.close();// this closes the connection with the database.
+		        } catch (Exception e) {
+		            System.out.print(e);
+		        }
+		    }
+	 
+	 public void selectdb2(String message) {
+		    //this method will connect my Provider once Login is selected at the Sample Frame class.                            
+		        try {
+		            //the start of my connection with the database.
+		            Class.forName("com.mysql.cj.jdbc.Driver");
+		            String dbServer = "jdbc:mysql://localhost:3306/ultravision?useTimezone=true&serverTimezone=UTC";
+		            String user = "root";
+		            String password3 = "rootroot";
+		            Connection con = DriverManager.getConnection(dbServer, user, password3);
+		            Statement stmt = con.createStatement();
+		            String sql = message;
+		            ResultSet rs = stmt.executeQuery(sql);
+
+		            if (rs.next()) {// if the informations typed exists inside my database..
+		                JOptionPane.showMessageDialog(null, "Update Customer Details");// an option will Show up...
+
+		                
+		            } else {// if the user informations are not there...
+		                JOptionPane.showMessageDialog(null, "Customer not registred yet.");// this option show the user can not go any further.
+		            }
+		            con.close();// this closes the connection with the database.
+		        } catch (Exception e) {
+		            System.out.print(e);
+		        }
+		    }
+	 
+	   public void reading2(String message) {
+	        try {
+	// Load the database driver
+
+	            Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+	            String dbServer = "jdbc:mysql://localhost:3306/ultravision?useTimezone=true&serverTimezone=UTC";
+	            String user = "root";
+	            String password = "rootroot";
+	            String query = message;
+
+	// Get a connection to the database
+	             conn = DriverManager.getConnection(dbServer, user, password);
+
+	// Get a statement from the connection
+	             stmt = conn.createStatement();
+
+	// Execute the query
+	             rs = stmt.executeQuery(query);
+	// Loop through the result set
+	             if (rs.next()) {// if the informations typed exists inside my database..
+		                JOptionPane.showMessageDialog(null, "Login Successull");// an option will Show up...
+		                Dbselect(message);
+		                
+		                
+		              
+		               
+
+		            } else {// if the user informations are not there...
+		                JOptionPane.showMessageDialog(null, "No Media found with this Id.Please try again...");
+		               
+		            }
+
+	            
+	            
+
+	            
+
+	// Close the result set, statement and the connection
+	            rs.close();
+	            stmt.close();
+	            conn.close();
+	        } catch (SQLException se) {
+	            System.out.println("SQL Exception:");
+
+	// Loop through the SQL Exceptions
+	            while (se != null) {
+	                System.out.println("State : " + se.getSQLState());
+	                System.out.println("Message: " + se.getMessage());
+	                System.out.println("Error : " + se.getErrorCode());
+
+	                se = se.getNextException();
+	            }
+	        } catch (Exception e) {
+	            System.out.println(e);
+	        }
+	    }
+	 
+		 
+		 
+	 
+	 
 	 public void dbsearch2(String search) {     //this method will connect my Provider once Login is selected at the Sample Frame class.                            
 	        try {
 	            //the start of my connection with the database.
@@ -86,16 +227,17 @@ public class Db {
 
 	            if (rs.next()) {// if the informations typed exists inside my database..
 	                JOptionPane.showMessageDialog(null, "Login Successull");// an option will Show up...
+	                Dbselect(sql);
 
-	                SearchTitle mytitle = new SearchTitle();// the method userPanel from the User class will be called.The Welcome Panel starts.
+	               
 
 	            } else {// if the user informations are not there...
 	                JOptionPane.showMessageDialog(null, "No Media found with this Id.Please try again...");
-	                ManageTitle mytitle = new ManageTitle();// this option show the user can not go any further.
+	               
 	            }
 	            con.close();// this closes the connection with the database.
 	        } catch (Exception e) {
-	            System.out.print(e);
+	            System.out.print(e);}
 	        }
 	
 	 
@@ -194,7 +336,7 @@ public class Db {
 	        }
 	    }
 	        
-	     public void Dbselect(String select) {
+	     public void getUsers(){ 
 	        	
 	    		try{
 	    			// Load the database driver
@@ -203,7 +345,7 @@ public class Db {
 	    			String dbServer = "jdbc:mysql://localhost:3306/ultravision?useTimezone=true&serverTimezone=UTC";
 	    			String user = "root";
 	    			String password = "rootroot";
-	    			String query = select;
+	    			String query = "Select * from customer";;
 
 	    			// Get a connection to the database
 	    			Connection conn = DriverManager.getConnection(dbServer, user, password) ;
@@ -220,19 +362,32 @@ public class Db {
 	    			  int i = 0;
 	    	            while (rs.next()) {
 	    	            	
+	    	            	ArrayList<Customer> customer= new ArrayList();
 	    	            	   
+	    	            	   Customer c;
 	    	            	   
-	    	                data[i][0] = rs.getString("idCustomer");// criando um array
-	    	                data[i][1] = rs.getString("MembershipCard");
-	    	                data[i][2] = rs.getString("PlanType");
-	    	                data[i][3] = rs.getString("Points");// criando um array
-	    	                data[i][4] = rs.getString("email");
-	    	                data[i][5] = rs.getString("Name");
-	    	                data[i][6] = rs.getString("Surname");// criando um array
-	    	                data[i][7] = rs.getString("Phone");
-	    	                data[i][8] = rs.getString("Gender");
-	    	                data[i][9] = rs.getString("RentalS");// criando um array
-	    	                data[i][10] = rs.getString("FreeRental");
+	    	                 c = new Customer (rs.getString("idCustomer"),
+	    	            			   rs.getString("MembershipCard"),
+	    	            			   rs.getString("PlanType"),
+	    	            			   rs.getString("Points"),
+	    	            			   rs.getString("email"),
+	    	            			   rs.getString("Name"),
+	    	            			   rs.getString("Surname"),
+	    	            			   rs.getString("Phone"),
+	    	            			   rs.getString("Gender"),
+	    	            			   rs.getString("RentalS"),
+	    	            			   rs.getString("FreeRental"));
+	    	            	   
+	    	            	   customer.add(c);
+	    	            	   
+	    	            	   for(Customer newcustomer :customer)
+	    	            		  
+	    	            		   System.out.println(customer);
+	    	            	   
+	    	            	 
+	    	            		   
+	    	            	   
+	    	               
 	    	               
 	    	               
 
@@ -264,6 +419,7 @@ public class Db {
 	    		catch( Exception e ){
 	    			System.out.println( e ) ;
 	    		}
+				
 	    	}
 
 		

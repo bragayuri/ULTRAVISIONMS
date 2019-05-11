@@ -1,12 +1,19 @@
+//Yuri Braga 2017141
+
 package Product;
 
 import Model.Db;
 
+// This class will mainly save the informations from the View to the Database.
+//Also will be base from instance and use of getters and setters to display informations.
+
 public class Music extends Media implements Cd {
 	
+	// here are some attributes that are exclusive for this class.
 	protected String artist;
 	protected String musicgenre;
 	
+	// My constructor which will receive as parameter the values from the View class.
 	public Music(String a,String b, String c, String d, String E,String f, String g, String h, String I,String j, String k) {
 		
 		//
@@ -30,6 +37,8 @@ public class Music extends Media implements Cd {
 		 Db mydb = new Db();
 		 mydb.DbInsertCustomer(message);
 	}
+	
+	// Here is the method implemented from the interface Cd.
 
 	@Override
 	public void musicStorage() {

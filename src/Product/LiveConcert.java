@@ -1,11 +1,22 @@
+//Yuri Braga 2017141
+
 package Product;
 
 import Model.Db;
 
+/*
+ * This class will build a frame to Add LiveConert Videos.
+ * It implements the interface BlueRay, Cd and Dvd.
+ */
+
 public class LiveConcert extends Media implements BlueRay,Dvd,Cd {
+	
+	// Declaring attributes that will be exclusive for this class.
 	
 	protected String artist;
 	protected String musicgenre;
+	
+	// Here I will encapsulate the values passed as parameters.
 	
 	public LiveConcert(String a,String b,String c,String d,String E,String f,String g,String h, String I, String j,String k) {
 	
@@ -31,6 +42,8 @@ public class LiveConcert extends Media implements BlueRay,Dvd,Cd {
 	
 	}
 	
+	
+	// here are the methods implemented witl the interface.
 
 	@Override
 	public void musicStorage() {
@@ -46,6 +59,13 @@ public class LiveConcert extends Media implements BlueRay,Dvd,Cd {
 
 	@Override
 	public void ultraHighQualityVideos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void ultraHighQualityVideos(String blueray) {
 		// TODO Auto-generated method stub
 		
 	}

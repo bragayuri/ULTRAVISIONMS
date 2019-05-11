@@ -1,3 +1,5 @@
+
+// Yuri Braga 2017141
 package View;
 
 import java.awt.Font;
@@ -14,8 +16,13 @@ import javax.swing.JTextField;
 import Product.LiveConcert;
 import Product.Movie;
 
+
+/*
+ * This class will set a frame to Add a LiveConcert type of media.
+ */
 public class AddLiveC extends JFrame implements ActionListener {
 	
+	//
 	JTextField t1;
 	JTextField t2;
 	JTextField t3;
@@ -27,6 +34,8 @@ public class AddLiveC extends JFrame implements ActionListener {
 	JTextField t9;
 	JTextField t10;
 	JTextField t11;
+	
+	// My constructor will set my frame.
 	
 	public AddLiveC() {
 		
@@ -73,7 +82,7 @@ public class AddLiveC extends JFrame implements ActionListener {
 		 JLabel l2 = new JLabel("TITLE TYPE");
 		 three.add(l2);
 		 
-		 t2= new JTextField("ML                                              ");
+		 t2= new JTextField("ML ");
 		 three.add(t2);
 		 
 		 /*
@@ -86,7 +95,7 @@ public class AddLiveC extends JFrame implements ActionListener {
 		 JLabel l3 = new JLabel("FORMAT");
 		 four.add(l3);
 		 
-		 t3= new JTextField("Blue-Ray,DVD                         ");
+		 t3= new JTextField("Blue-Ray,DVD");
 		 four.add(t3);
 		 
 		 /*
@@ -202,15 +211,18 @@ public class AddLiveC extends JFrame implements ActionListener {
 		 
 		 JButton btn1 = new JButton("ADDTITLE");
 		 fourteen.add(btn1);
-		 btn1.setActionCommand("Addtitle");
-		 btn1.addActionListener(this);
+		 btn1.setActionCommand("ADDTITLE");
+	     btn1.addActionListener(this);
 		 
 		 JButton btn2 = new JButton("GO BACK");
 		 fourteen.add(btn2);
+		 btn2.setActionCommand("GO BACK");
+	     btn2.addActionListener(this);
 		 
 		 JButton btn3 = new JButton("HOME");
 		 fourteen.add(btn3);
-		 
+		 btn3.setActionCommand("HOME");
+	     btn3.addActionListener(this);
 		 
 		 
 		
@@ -249,6 +261,19 @@ public class AddLiveC extends JFrame implements ActionListener {
 					String k = t11.getText();
 					
 					new LiveConcert(a,b,c,d,E,f,g,h,i,j,k);
+		}
+		
+		else if(e.getActionCommand().equals("GO BACK")) {
+			this.dispose();
+			
+		ManageTitle mytitle = new ManageTitle();
+		}
+		
+		if(e.getActionCommand().contentEquals("HOME")) {
+			this.dispose();
+			
+			MainPanel mypanel = new MainPanel();
+			
 		}
 		
 	}

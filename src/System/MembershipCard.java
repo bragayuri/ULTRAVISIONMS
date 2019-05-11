@@ -1,9 +1,18 @@
+
+// Yuri Braga 2017141
 package System;
+
+// This is my Membership card class.
+/*
+ * The main responsability is to sum the points and display when a customer has a free rental.
+ * Unfortunately I could not implement this class into the program.
+ */
 
 public class MembershipCard {
 
 	   private int points;
 	   private boolean freeRentAllowed;
+	   
 	   
 	   public void addPoints(int points){
 			this.points += points;

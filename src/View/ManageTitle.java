@@ -1,6 +1,11 @@
+//Yuri Braga 2017141.
+
+
 package View;
 
 import java.awt.Font;
+
+
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,8 +21,11 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import Model.Db;
-import sample.view.Provider;
-import sample.view.customerPanel;
+
+//This class will be responsible to open a frame and hold the values for each 
+//possible action regards Managing a Title.
+
+
 
 public class ManageTitle extends JFrame implements ActionListener {
 	

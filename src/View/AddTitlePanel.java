@@ -3,15 +3,19 @@ package View;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import Model.Db;
+import Product.BoxSet;
+import Product.LiveConcert;
 
 public class AddTitlePanel extends JFrame implements ActionListener {
 	
@@ -141,7 +145,7 @@ public class AddTitlePanel extends JFrame implements ActionListener {
 		 JPanel nine = new JPanel();
 		this.add(nine);
 		
-		JLabel l8 = new JLabel("Rate");
+		JLabel l8 = new JLabel("Director");
 		 nine.add(l8);
 		 
 		 t8= new JTextField(20);
@@ -154,7 +158,7 @@ public class AddTitlePanel extends JFrame implements ActionListener {
 		 JPanel ten = new JPanel();
 		 this.add(ten);
 		 
-		 JLabel l9 = new JLabel("DIRECTOR");
+		 JLabel l9 = new JLabel("Rate");
 		 ten.add(l9);
 		 
 		 t9= new JTextField(20);
@@ -213,9 +217,13 @@ public class AddTitlePanel extends JFrame implements ActionListener {
 		 
 		 JButton btn2 = new JButton("GO BACK");
 		 fourteen.add(btn2);
+		 btn2.setActionCommand("GO BACK");
+	     btn2.addActionListener(this);
 		 
 		 JButton btn3 = new JButton("HOME");
 		 fourteen.add(btn3);
+		 btn3.setActionCommand("HOME");
+	     btn3.addActionListener(this);
 		 
 		 
 		 
@@ -234,6 +242,7 @@ public class AddTitlePanel extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+			
 		if (e.getActionCommand().equals("ADDTITLE")) {
             String a =t1.getText();
             String b = t2.getText();
@@ -243,19 +252,37 @@ public class AddTitlePanel extends JFrame implements ActionListener {
             String f = t6.getText();
             String g = t7.getText();
             String h = t8.getText();
-            String i = t9.getText();
+            String I = t9.getText();
             String j = t10.getText();
             String k = t11.getText();
             String l = t12.getText();
-		
-            String message = "INSERT INTO `ultravision`.`tvserie` (`MediaName`, `MediaType`,`Format`,`Year`,`Genre`,`Description`,`ArrivalDate`,`Rate`,`Director`,`TvStudio`,`Season`,`EpisodeNumber`) "
-            		+ "VALUES ('" + a + "','" + b + "','" + c + "', '" + d + "', '" + E + "','" + f + "','" + g + "','" + h + "','" + i + "','" + j + "', '" + k + "','"+ l +"');";
-
-          
-          Db mydb = new Db();
-          mydb.DbInsertCustomer(message);
+            
+            // creating a List of BoxSet type of media
+            
+            ArrayList<BoxSet> boxset = new ArrayList<BoxSet>();
+            BoxSet boxset2;
+            
+            boxset2= new BoxSet(a,b,c,d,E,f,g,h,I,j,k,l);
+            
+            
+            
+            
+            
+            
 		
 	}
+		else if(e.getActionCommand().equals("GO BACK")) {
+			this.dispose();
+			
+		ManageTitle mytitle = new ManageTitle();
+		}
+		
+		if(e.getActionCommand().contentEquals("HOME")) {
+			this.dispose();
+			
+			MainPanel mypanel = new MainPanel();
+			
+		}
 
 	}
 	

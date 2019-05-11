@@ -1,3 +1,5 @@
+//Yuri Braga 2017141
+
 package View;
 
 import java.awt.GridLayout;
@@ -12,6 +14,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -78,18 +81,28 @@ public class SearchTitle extends JFrame implements ActionListener{
 	        
 	        JButton btn1 = new JButton("Update");
 	        two.add(btn1);
+	        btn1.setActionCommand("Update");
+		    btn1.addActionListener(this);
 	        
 	        JButton btn2 = new JButton("Delete");
 	        two.add(btn2);
+	        btn2.setActionCommand("Delete");
+		    btn2.addActionListener(this);
 	        
 	        JButton btn3 = new JButton("Start Rental");
 	        two.add(btn3);
+	        btn3.setActionCommand("RENTAL");
+		    btn3.addActionListener(this);
 	        
 	        JButton btn4 = new JButton("Go Back");
 	        two.add(btn4);
+	        btn4.setActionCommand("BACK");
+		    btn4.addActionListener(this);
 	        
 	        JButton btn5 = new JButton("Home");
 	        two.add(btn5);
+	        btn5.setActionCommand("Home");
+		    btn5.addActionListener(this);
 	        
 	        
 	        
@@ -173,8 +186,30 @@ public class SearchTitle extends JFrame implements ActionListener{
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
+	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getActionCommand().equals("Update")) {
+			this.dispose();
+			
+		
+		}else if (e.getActionCommand().equals("Delete")) {
+			
+			JOptionPane.showMessageDialog(null,"Select to delete");
+			
+		} if (e.getActionCommand().equals("RENTAL")) {
+			AddRental myrental = new AddRental();
+			
+		}else if (e.getActionCommand().equals("Home")) {
+			this.dispose();
+			MainPanel mypanel = new MainPanel();
+			
+		}
+		if (e.getActionCommand().equals("BACK")) {
+			this.dispose();
+			ManageTitle mytitle = new ManageTitle();
+			
+			
+		}
 		
 	}
 	
